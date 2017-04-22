@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html>
 <body>
-
+<center>
 <p>Jason & Adonis's</p>
 <img src="databaseproject.png" alt="Database" style="width:204px;height:186px;">
 <hr>
-<P>4)</P>
+<P>View all students (display all attributes in the table for each student</P>
+<hr>
+<br>
+
 <form action="main.php">
     <input type="submit" value="Back to Index" />
 </form>
+<hr>
 
-
-<br>
-
-
-
-<table border="1" align="left"  >
+<table border="1" align="center"  >
 	<caption><h2>Student Table</h2></caption>
 		<thead>
 			<tr>
@@ -60,6 +59,8 @@
 	
 ?>
 </table>
+
 </body>
+</center>
 </html>
 

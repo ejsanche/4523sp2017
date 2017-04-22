@@ -2,13 +2,11 @@
 <html>
 <body>
 
-<p>Jason & Adonis's</p>
+<center><p>Jason & Adonis's</p>
 <img src="databaseproject.png" alt="Database" style="width:204px;height:186px;">
 <hr>
-<P>2)</P>
-<form action="main.php">
-    <input type="submit" value="Back to Index" />
-</form>
+<P> Add a course to the Course table</P>
+<hr>
 <p> Enter the data you would like to send to the database in the following form: </p>
 
 <br>
@@ -25,8 +23,9 @@
   <input type="text" name="Credit" value="3"><br><br>
   <input name="submit" type="submit" >
 </form>
-</body>
-</html>
+
+<hr>
+
 
 <?php
 if (isset($_POST['submit'])) 
@@ -40,17 +39,24 @@ if (isset($_POST['submit']))
     $Credit = escapeshellarg($_POST[Credit]);
     
     $command = 'java -cp .:mysql-connector-java-5.1.40-bin.jar DBproject ' . $function .' ' . $DeptCode . ' ' . $CourseNum . ' ' . $Title . ' ' .$Credit;
-     echo "<p>command: $command <p>";
+    
     // remove dangerous characters from command to protect web server
     $command = escapeshellcmd($command);
-    echo "<p>command: $command <p>";
+
  
     // run jdbc_insert_restaurant.exe
     system($command); 
 
-    echo("executed")       ;  
     
 }
 ?>
+<hr>
+<form action="main.php">
+    <input type="submit" value="Back to Index" />
+</form>
+</body>
+</center>
+</html>
+
 
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <body>
-
+<center>
 <p>Jason & Adonis's</p>
 <img src="databaseproject.png" alt="Database" style="width:204px;height:186px;">
 <hr>
@@ -13,6 +13,7 @@
 
 
 <p> Select which action you would like to perform on the database using the buttons below: </p>
+<hr>
 <form action="function1.php">
     <input type="submit" class="btn1" value="1) Add a student to the Student table" />
 </form>
@@ -46,6 +47,6 @@
 
 <?php
 ?>
-
+</center>
 </body>
 </html>

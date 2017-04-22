@@ -46,7 +46,7 @@ public class DB_connector {
             statement.close();
     }
 
-
+/*
     // Execute an SQL query passed in as a String parameter
     // and print the resulting relation
     public void query(String q) throws SQLException {
@@ -70,31 +70,22 @@ public class DB_connector {
             e.printStackTrace();
         }
     }
-
-    public int query(String q, String [] input) throws SQLException {
+*/
+    public int verifyQuery(String q) throws SQLException {
         if (statement == null) {
             statement = connection.createStatement();
         }
         try {
             ResultSet resultSet = statement.executeQuery(q);
-            System.out.println("\n--------------------------------------------\n");
-           
             
+           
+            //if the primary key already exist it will return -1 otherwise will return 1
             if (!resultSet.next()) {
-                System.out.println("The " + input[1] + " does NOT exists\n");
-                return -1;
-            } else if ("getValue".equals(input[0])) { //this option will return the value of the query. Example restaurantNumber:
-                String value = resultSet.getString(1);
-                try {
-                    return Integer.parseInt(value);
-                } catch (NumberFormatException n) {
-                    n.printStackTrace();
-                    return -1;
-                }
-            } else {
-                resultSet.absolute(0); // move back the result set pointer 
-                System.out.println(input[1] + ":");
-                print(resultSet);
+
+                return 1;
+            }
+            else{
+
                 return 0;
             }
 
@@ -103,7 +94,7 @@ public class DB_connector {
             return -2;
         }
     }
-
+    /*
     // Print the results of a query with attribute names on the first line
     // Followed by the tuples, one per line
     public void print(ResultSet resultSet) throws SQLException {
@@ -137,7 +128,7 @@ public class DB_connector {
             System.out.println("");
         }
         System.out.println();
-    }
+    }*/
 
     // update the tables by doing insert into any table, any values from data passed in as String parameters. 
     //or perform deletes 
@@ -147,9 +138,8 @@ public class DB_connector {
         }
         try {
             statement.executeUpdate(query);
-            System.out.println("Action done succesfully\n");
         } catch (SQLException e) {
-            System.out.println("Cannot be updated");
+            System.out.println("Cannot be updated because of sql error");
             e.printStackTrace();
         }
     }
