@@ -14,16 +14,15 @@
 
 <form  action="function2.php" method="POST">
   Dept Code:<br>
-  <input type="text" name="DeptCode" value="CSCE"><br>
+  <input type="text" name="DeptCode" value="CSCE" maxlength = "5" required><br>
   Course Number:<br>
-  <input type="text" name="CourseNum" value="4523"><br>
+  <input type="number" name="CourseNum" value="4523" maxlength = "5"  required><br>
   Title:<br>
-  <input type="text" name="Title" value="Database Management"><br>
+  <input type="text" name="Title" value="Database Management" maxlength = "32" required><br>
   Credit Hours: <br>
-  <input type="text" name="Credit" value="3"><br><br>
+  <input type="number" name="Credit" value="3" maxlength = "2" required><br><br>
   <input name="submit" type="submit" >
 </form>
-
 <hr>
 
 

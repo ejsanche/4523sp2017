@@ -55,7 +55,7 @@ public class DBproject {
             default:
                     break;
         }
-                
+        jdbc.disConnect();
        
     }
     

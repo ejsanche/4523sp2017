@@ -14,12 +14,12 @@
 
 
 <form  action="function1.php" method="post">
-  StudentID:<br>
-  <input type="text" name="StudentID" value="1234"><br>
+  StudentID(Must be Integer):<br>
+  <input type="number" name="StudentID" value="1234" maxlength = "9" required><br>
   Student Name:<br>
-  <input type="text" name="StudentName" value="John Doe"><br>
+  <input type="text" name="StudentName" value="John Doe" maxlength = "32" required><br>
   Major:<br>
-  <input type="text" name="Major" value="Computer Science"><br><br>
+  <input type="text" name="Major" value="Computer Science" maxlength = "32" required><br><br>
   <input name="submit" type="submit" >
 </form>
 <hr>
@@ -30,7 +30,7 @@ if (isset($_POST['submit']))
 {
     
     // replace ' ' with '\ ' in the strings so they are treated as single command line args
-    $function = escapeshellarg("1");
+    $function = escapeshellarg("1"); //to let know java which function it will execute
     $StudentID = escapeshellarg($_POST[StudentID]);
     $StudentName = escapeshellarg($_POST[StudentName]);
     $Major = escapeshellarg($_POST[Major]);

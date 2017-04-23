@@ -14,11 +14,11 @@
 
 <form  action="function3.php" method="POST">
   Student ID:<br>
-  <input type="text" name="StudentID" value="1234"><br>
+  <input type="number" name="StudentID" value="1234" maxlength = "9" required><br>
   Dept Code:<br>
-  <input type="text" name="DeptCode" value="CSCE"><br>
+  <input type="text" name="DeptCode" value="CSCE" maxlength = "5" required><br>
   Course Number:<br>
-  <input type="text" name="CourseNum" value="4523"><br><br>
+  <input type="number" name="CourseNum" value="4523" maxlength = "5" required><br><br>
   <input name="submit" type="submit" >
 </form>
 

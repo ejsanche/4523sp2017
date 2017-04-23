@@ -95,7 +95,7 @@ public class DBproject {
         String verifyquery ="SELECT * FROM Enrollment e WHERE e.studentId ='"+args[1]+"' AND e.deptCode = '"+args[2]+"' AND e.courseNum = '" +args[3]+"';";
         int verificationResult = jdbc.verifyQuery(verifyquery);
          if(verificationResult == 0){
-            System.out.println("This student with id \" "+args[1]+" \" is already enroll in the course \" " +args[1]+ " " +args[2]+" \"\" " +args[1]+ " " +args[2]+" \"");
+            System.out.println("This student with id \" "+args[1]+" \" is already enroll in the course \" " +args[2]+ " " +args[3]+" \"");
             return;
         }
         //veryfy if couse exists

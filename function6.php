@@ -22,63 +22,43 @@
 <hr>
 
 <?php
-    include 'Conexion.php';
-    if (isset($_POST['submit'])) 
+   
+        include('DB_connection.php'); // include database class
+        if (isset($_POST['submit'])) 
         {
-             $StudentID = escapeshellarg($_POST[StudentID]);
-             
-             $query = "SELECT  deptCode, courseNum, title, creditHours FROM  Student s
-                        NATURAL JOIN Enrollment
-                        NATURAL JOIN Course
-                        WHERE 
-                        s.StudentId = " . $StudentID .";";
-                   
-            $records = mysql_query($query) or die (mysql_error());
-            $colunms = array();
+            $StudentID = escapeshellarg($_POST[StudentID]);
+            $myDb_c = new DB_connection('ejsanche','21adonis94','ejsanche'); // create a new object, class php_db()
             
-            while($result =mysql_fetch_array($records , MYSQL_ASSOC)){
-                $colunms[] = $result;
-            }
-            
-            if(!empty($colunms)){
-                ?>
-                <table border="1" align="center"  >
-	                <caption><h2>Student Table</h2></caption>
-                    <thead>
-                        <tr>
-                            <th>Deparment code</th>
-                            <th>Course Number</th>
-                            <th>Title</th>
-                            <th>Credit Hours</th>
-                        </tr>
-                    </thead>
-            <?php
-                foreach($colunms as $c)
-	            {
-                    $deptcode=$c['deptCode'];
-                    $courseNum = $c['courseNum'];
-                    $title= $c['title'];
-                    $creditHours = $c['creditHours'];
-                    
-            ?>
-                    <tbody>
-                            <tr>
-                                <td><?php echo $deptcode;?></td>
-                                <td><?php echo $courseNum;?></td>
-                                <td><?php echo $title;?></td>
-                                <td><?php echo $creditHours;?></td>
-                            </tr> 
-                    </tbody>
-            <?php
+            //firt let verify if the student exists
+            $query = "SELECT * FROM Student s where s.studentId =".$StudentID.";";
+           
+            $student = $myDb_c->query($query);
+            if(!empty($student)){
+                //sql query to be executed
+                $query = "SELECT  deptCode, courseNum, title, creditHours FROM  Student s
+                            NATURAL JOIN Enrollment
+                            NATURAL JOIN Course
+                            WHERE 
+                            s.StudentId = " . $StudentID .";";
+                //get result from the query
+                $Enrrolment = $myDb_c->query($query);
+                
+                if(!empty($Enrrolment)){
+                    echo'<caption><h2>Student Table</h2></caption>';
+                    $myDb_c->printTable($Enrrolment);
+                    echo '<hr>';
+
+                }else{
+                    echo 'The student with ID "'.$StudentID.'" is not enrroll in any clourses yet';
+                    echo '<hr>';
                 }
-            ?>
-                </table>
-            <?php
-            
+            //Student is not in the records    
             }else{
-                echo("This student is not Enrolled in any courses yet");
+                echo'The student with ID "'.$StudentID.'" does not exist in our records';
+                echo '<hr>';
             }
             
+            $myDb->disconnect();
         }
         
 ?>

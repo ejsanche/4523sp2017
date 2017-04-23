@@ -24,60 +24,27 @@
 
 
 <?php
-    include 'Conexion.php';
-    if (isset($_POST['submit'])) 
+
+        include('DB_connection.php'); // include database class
+        if (isset($_POST['submit'])) 
         {
-             $deptcode = escapeshellarg($_POST[deptcode]);
-             
-             $query = "SELECT * FROM Course c WHERE c.deptCode = ".$deptcode.";";
-                   
-            $records = mysql_query($query) or die (mysql_error());
-            $colunms = array();
-            
-            while($result =mysql_fetch_array($records , MYSQL_ASSOC)){
-                $colunms[] = $result;
-            }
-            
-            if(!empty($colunms)){
-                ?>
-                <table border="1" align="center"  >
-	                <caption><h2>Student Table</h2></caption>
-                    <thead>
-                        <tr>
-                            <th>Deparment code</th>
-                            <th>Course Number</th>
-                            <th>Title</th>
-                            <th>Credit Hours</th>
-                        </tr>
-                    </thead>
-            <?php
-                foreach($colunms as $c)
-	            {
-                    $deptcode=$c['deptCode'];
-                    $courseNum = $c['courseNum'];
-                    $title= $c['title'];
-                    $creditHours = $c['creditHours'];
-                    
-            ?>
-                    <tbody>
-                            <tr>
-                                <td><?php echo $deptcode;?></td>
-                                <td><?php echo $courseNum;?></td>
-                                <td><?php echo $title;?></td>
-                                <td><?php echo $creditHours;?></td>
-                            </tr> 
-                    </tbody>
-            <?php
-                }
-            ?>
-                </table>
-            <?php
-            
+            $deptcode = escapeshellarg($_POST[deptcode]);
+            $myDb_c = new DB_connection('ejsanche','21adonis94','ejsanche'); // create a new object, class php_db()
+            $query = "SELECT * FROM Course c WHERE c.deptCode = ".$deptcode.";";
+            $Course = $myDb_c->query($query);
+            if(!empty($Course)){
+                echo'<caption><h2>Student Table</h2></caption>';
+                $myDb_c->printTable($Course);
+		echo '<hr>';
+
             }else{
-                echo("The deparment code that you entered does not exists");
+                echo 'The deparment code "'.$deptcode.'" does not exists';
+		echo '<hr>';
             }
-            
+            $myDb->disconnect();
         }
+        
+
         
 ?>
 

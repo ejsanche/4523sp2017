@@ -5,7 +5,7 @@
 <center><p>Jason & Adonis's</p>
 <img src="databaseproject.png" alt="Database" style="width:204px;height:186px;">
 <hr>
-<P> Add a course to the Course table</P></center>
+<P> Add a course to the Course table</P>
 <hr>
 <p> Enter the data you would like to send to the database in the following form: </p>
 
@@ -55,6 +55,7 @@ if (isset($_POST['submit']))
     <input type="submit" value="Back to Index" />
 </form>
 </body>
+</center>
 </html>
 
 
