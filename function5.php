@@ -16,7 +16,7 @@
 
 <form  action="function5.php" method="post">
   Deparment Code:<br>
-  <input type="text" name="deptcode" value="CSCE"><br>
+  <input type="text" name="deptcode" value="CSCE" maxlength = "5" required><br>
   <input name="submit" type="submit" >
 </form>
 <hr>
