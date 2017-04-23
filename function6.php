@@ -16,7 +16,7 @@
 
 <form  action="function6.php" method="post">
   StudentID:<br>
-  <input type="text" name="StudentID" value="1234"><br>
+  <input type="text" name="StudentID" value="1234" maxlength = "9" required ><br>
   <input name="submit" type="submit" >
 </form>
 <hr>
